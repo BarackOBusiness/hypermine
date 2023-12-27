@@ -454,7 +454,7 @@ impl Sim {
             7 => Material::Granite,
             8 => Material::Diorite,
             9 => Material::Andesite,
-            10 => Material::Sandstone,
+            10 => Material::Water,
             // This function shouldn't be called with an integer passed that is not on the list,
             // if it is somehow, set to default of planks
             _ => Material::WoodPlanks,
