@@ -256,6 +256,56 @@ impl Window {
                                 sim.toggle_no_clip();
                             }
                         }
+                        VirtualKeyCode::Key1 => {
+                            if let Some(sim) = self.sim.as_mut() {
+                                sim.update_selection(1);
+                            }
+                        }
+                        VirtualKeyCode::Key2 => {
+                            if let Some(sim) = self.sim.as_mut() {
+                                sim.update_selection(2);
+                            }
+                        }
+                        VirtualKeyCode::Key3 => {
+                            if let Some(sim) = self.sim.as_mut() {
+                                sim.update_selection(3);
+                            }
+                        }
+                        VirtualKeyCode::Key4 => {
+                            if let Some(sim) = self.sim.as_mut() {
+                                sim.update_selection(4);
+                            }
+                        }
+                        VirtualKeyCode::Key5 => {
+                            if let Some(sim) = self.sim.as_mut() {
+                                sim.update_selection(5);
+                            }
+                        }
+                        VirtualKeyCode::Key6 => {
+                            if let Some(sim) = self.sim.as_mut() {
+                                sim.update_selection(6);
+                            }
+                        }
+                        VirtualKeyCode::Key7 => {
+                            if let Some(sim) = self.sim.as_mut() {
+                                sim.update_selection(7);
+                            }
+                        }
+                        VirtualKeyCode::Key8 => {
+                            if let Some(sim) = self.sim.as_mut() {
+                                sim.update_selection(8);
+                            }
+                        }
+                        VirtualKeyCode::Key9 => {
+                            if let Some(sim) = self.sim.as_mut() {
+                                sim.update_selection(9);
+                            }
+                        }
+                        VirtualKeyCode::Key0 => {
+                            if let Some(sim) = self.sim.as_mut() {
+                                sim.update_selection(10);
+                            }
+                        }
                         VirtualKeyCode::Escape => {
                             let _ = self.window.set_cursor_grab(CursorGrabMode::None);
                             self.window.set_cursor_visible(true);

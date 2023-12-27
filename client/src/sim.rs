@@ -59,6 +59,7 @@ pub struct Sim {
     place_block_pressed: bool,
     /// Whether the break-block button has been pressed since the last step
     break_block_pressed: bool,
+    selected_block: Material,
     prediction: PredictedMotion,
     local_character_controller: LocalCharacterController,
 }
@@ -88,6 +89,7 @@ impl Sim {
             jump_held: false,
             place_block_pressed: false,
             break_block_pressed: false,
+            selected_block: Material::WoodPlanks,
             prediction: PredictedMotion::new(proto::Position {
                 node: NodeId::ROOT,
                 local: na::one(),
@@ -440,6 +442,25 @@ impl Sim {
             .expect("destroyed nonexistent entity");
     }
 
+    // Change the block selected to be placed
+    pub fn update_selection(&mut self, num: u16) {
+        self.selected_block = match num {
+            1 => Material::WoodPlanks,
+            2 => Material::GreyBrick,
+            3 => Material::WhiteBrick,
+            4 => Material::Grass,
+            5 => Material::Dirt,
+            6 => Material::Sand,
+            7 => Material::Granite,
+            8 => Material::Diorite,
+            9 => Material::Andesite,
+            10 => Material::Sandstone,
+            // This function shouldn't be called with an integer passed that is not on the list,
+            // if it is somehow, set to default of planks
+            _ => Material::WoodPlanks,
+        };
+    }
+
     /// Provides the logic for the player to be able to place and break blocks at will
     fn get_local_character_block_update(&self) -> Option<BlockUpdate> {
         let placing = if self.place_block_pressed {
@@ -477,7 +498,7 @@ impl Sim {
         };
 
         let material = if placing {
-            Material::WoodPlanks
+            self.selected_block
         } else {
             Material::Void
         };
